@@ -49,9 +49,10 @@ public class ClientsController {
 
     // Delete Client
     @RequestMapping(value="/clients/{idClient}", method = RequestMethod.DELETE)
-    public @ResponseBody void delete(@PathVariable Integer idClient){
+    public @ResponseBody List<ClientsModel> delete(@PathVariable Integer idClient){
         ClientsModel client = find(idClient);
         this.actions.delete(client);
+        return this.actions.findAll();
     }
 
     
