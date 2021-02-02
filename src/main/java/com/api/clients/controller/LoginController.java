@@ -32,18 +32,16 @@ public class LoginController {
         return this.actions.save(login);
     }
 
-    @RequestMapping(value = "/login/{idLogin}", method = RequestMethod.GET)
-    public @ResponseBody LoginModel find(@PathVariable Integer idLogin){
-        return this.actions.findByIdLogin(idLogin);
+    @RequestMapping(value = "/login/{email}", method = RequestMethod.GET)
+    public @ResponseBody LoginModel findByEmail(@PathVariable String email){ 
+        return this.actions.findByEmail(email);
     }
 
-    @RequestMapping(value = "/login/{idLogin}", method = RequestMethod.DELETE)
-    public @ResponseBody List<LoginModel> delete(@RequestBody Integer idLogin){
-        LoginModel login = find(idLogin);
+    @RequestMapping(value = "/login/{email}", method = RequestMethod.DELETE)
+    public @ResponseBody List<LoginModel> delete(@RequestBody String email){
+        LoginModel login = this.findByEmail(email);
         this.actions.delete(login);
         return this.actions.findAll();
     }
-
-
 
 }

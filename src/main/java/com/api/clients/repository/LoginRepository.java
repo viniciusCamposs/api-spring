@@ -14,6 +14,9 @@ public interface LoginRepository extends CrudRepository<LoginModel, Integer>{
     // Pesquisar por id
     LoginModel findByIdLogin(int id);
 
+    //Pesquisar pelo campo de email
+    LoginModel findByEmail(String email);
+
     // Remover login
     void delete(LoginModel login); 
     
